@@ -57,7 +57,8 @@ ADD nginx/bedrock /etc/nginx/sites-enabled/bedrock
 RUN pip install ngxtop
 
 # forward request and error logs to docker log collector
-RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log
+RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log && ln -sf /dev/stderr /var/log/hhvm/error.log
+RUN sed -i "/# server_name_in_redirect off;/ a\fastcgi_cache_path /var/run/nginx levels=1:2 keys_zone=drm_custom_cache:16m max_size=1024m inactive=60m;" /etc/nginx/nginx.conf
 
 COPY docker-entrypoint.sh /entrypoint.sh
 COPY makedb.php /makedb.php

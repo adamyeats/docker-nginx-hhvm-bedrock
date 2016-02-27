@@ -1,0 +1,7 @@
+/Web/wordpress/*
+/Web/.vagrant/*
+
+/Web/wp-content/themes
+/Web/wp-content/plugins
+
+.DS_Store

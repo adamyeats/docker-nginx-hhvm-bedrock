@@ -1,4 +1,9 @@
 server {
+  server_name _;
+  return 302 $scheme://example.com$request_uri;
+}
+
+server {
   listen 80 default_server;
   listen [::]:80 default_server;
 
@@ -30,6 +35,13 @@ server {
   gzip_buffers 16 8k;
   gzip_http_version 1.1;
   gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
+
+  location / {
+    try_files $uri $uri/ /index.php?$args;
+  }
+
+  # Add trailing slash to */wp-admin requests.
+  rewrite /wp-admin$ $scheme://$host$uri/ permanent;
 
   # hhvm with php-fpm fallback config
   location ~ \.(hh|php)$ {

@@ -1,7 +1,7 @@
 FROM ubuntu:wily
 
 # Originally based on https://github.com/philipz/docker-nginx-hhvm-wordpress
-MAINTAINER Adam Yeats <ay@commonhq.com>
+MAINTAINER Adam Yeats <ay@xadamy.xyz>
 
 # Get latest version of software-properties-common first
 RUN apt-get update && apt-get -y upgrade && apt-get -y install software-properties-common

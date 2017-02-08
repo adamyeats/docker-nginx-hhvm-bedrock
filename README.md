@@ -1,6 +1,10 @@
 # docker-nginx-hhvm-bedrock
 :ship: a docker image for wordpress sites built with bedrock
 
+## Note
+
+A year after releasing, I've come to the opinion that Docker is not best suited for this task. Containerizing WordPress seems a little heavy handed for something that can be solved using [Ansible](https://github.com/xadamy/provision/tree/master/bedrock-wordpress) and [Capstrano](https://github.com/xadamy/bedrock-capistrano) much easier, and is much more difficult to configure and debug. I will still be maintaining this repo for the time being, but my personal recommendation would be just to use a regular server instance and deploy using Capistrano or something similar.
+
 ## What is Bedrock?
 
 Bedrock is a modern WordPress stack that helps you get started with the best development tools and project structure.
